@@ -1,0 +1,221 @@
+<!-- A DrawerLayout is intended to be used as the top-level content view using match_parent for both width and height to consume the full space available. -->
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/drawer_layout"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    tools:context="le1779.whereareyou.MapsActivity">
+
+    <!-- As the main content view, the view below consumes the entire
+         space available using match_parent in both dimensions. -->
+    <FrameLayout android:id="@+id/container" android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="match_parent"  >
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/map"
+            tools:context="le1779.whereareyou.MapsActivity"
+            android:name="com.google.android.gms.maps.MapFragment" />
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFC0CB"
+            android:minHeight="?attr/actionBarSize" >
+        </android.support.v7.widget.Toolbar>
+
+        <TextView
+            android:id="@+id/txtOutput"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#66cccccc"
+            android:padding="3dp"
+            android:text="Output"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:visibility="invisible"
+            android:layout_below="@+id/toolBar"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/this_area_time_textView"
+            android:layout_alignParentBottom="false"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/this_area_delete_button"
+            android:background="#FFC0CB"
+            android:textColor="#FFFFFF"
+            android:textSize="30dp"
+            android:visibility="invisible" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="刪除區域"
+            android:id="@+id/this_area_delete_button"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="#FFC0CB"
+            android:textColor="#FFFFFF"
+            android:visibility="invisible" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="點名"
+                android:id="@+id/rollcall_button"
+                android:gravity="center"
+                android:layout_gravity="right"
+                android:background="#FFC0CB"
+                android:textColor="#FFFFFF"
+                android:visibility="invisible" />
+
+            <HorizontalScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/horizontalScrollView"
+                android:background="#ddffffff">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/member_list_tableRow">
+
+                    </TableRow>
+
+                </TableLayout>
+            </HorizontalScrollView>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/time_textView"
+            android:layout_below="@+id/toolBar"
+            android:layout_centerHorizontal="true"
+            android:background="#DDFFFFFF" />
+
+    </RelativeLayout>
+    <!-- android:layout_gravity="start" tells DrawerLayout to treat
+         this as a sliding drawer on the left side for left-to-right
+         languages and on the right side for right-to-left languages.
+         If you're not building against API 17 or higher, use
+         android:layout_gravity="left" instead. -->
+    <!-- The drawer is given a fixed width in dp and extends the full height of
+         the container.
+         <fragment android:id="@+id/navigation_drawer"
+        android:layout_width="@dimen/navigation_drawer_width" android:layout_height="match_parent"
+        android:layout_gravity="start" android:name="le1779.whereareyou.NavigationDrawerFragment"
+        tools:layout="@layout/fragment_navigation_drawer" >
+    </fragment>-->
+    <LinearLayout
+        android:id="@+id/left_drawer"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="start"
+        android:clickable="true"
+        android:background="#ddffffff"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="群組清單 : "
+            android:id="@+id/group_count_textView"
+            android:layout_gravity="top"
+            android:textSize="20dp"
+            android:textColor="#000000"
+            android:visibility="gone" />
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/refresh_layout"
+            android:layout_weight="1">
+
+            <ExpandableListView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/group_expandableListView"
+                android:layout_weight="1"
+                android:childDivider="#FFC0CB"
+                android:dividerHeight="1px" />
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+
+
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="創建新群組"
+            android:id="@+id/creat_group_button"
+            android:layout_gravity="bottom"
+            android:textSize="20dp"
+            android:background="#FFC0CB"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/right_drawer"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true"
+        android:layout_gravity="end"
+        android:orientation="vertical"
+        android:background="#ddffffff" >
+
+        <!-- Right Drawer Content -->
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="#FFC0CB">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/user_pic_imageButton"
+                android:background="#0000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/user_name_textView"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/config_listView"
+            android:background="#FFFFFF" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="朋友"
+            android:id="@+id/right_button"
+            android:background="#FFFFFF"
+            android:textColor="#FFC0CB"
+            android:textSize="20dp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</android.support.v4.widget.DrawerLayout>

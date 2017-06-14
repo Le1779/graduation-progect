@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="le1779.whereareyou.AreaInfoActivity">
+    <item
+        android:id="@+id/area_info_nextpage"
+        android:icon="@drawable/next_page"
+        android:title="area_info_nextpage"
+        app:showAsAction="always"/>
+</menu>

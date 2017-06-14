@@ -1,0 +1,35 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 不需要 ActionBar 了,因為改用Toolbar -->
+        <item name="windowActionBar">false</item>
+        <!--
+        <item name="actionBarItemBackground">@color/bar_color</item>
+        <item name="dropDownListViewStyle">@style/DropDownListView.Example</item>
+        <item name="actionDropDownStyle">@style/DropDownNav.Example</item>
+        <item name="actionBarStyle">@style/ActionBar.Transparent.Example</item>
+        <item name="actionModeBackground">@color/bar_color</item>-->
+    </style>
+
+    <style name="ActionBar.Transparent.Example" parent="@style/Widget.AppCompat.Light.ActionBar">
+        <item name="background">@color/bar_color</item>
+    </style>
+
+    <style name="DropDownListView.Example" parent="@style/Widget.AppCompat.Light.ListView.DropDown">
+        <item name="background">@color/white</item>
+        <item name="android:listSelector">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="DropDownNav.Example" parent="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar">
+        <item name="android:background">@drawable/spinner_background_ab_example</item>
+        <item name="android:popupBackground">@color/bar_color</item>
+        <item name="android:dropDownSelector">@color/bar_color</item>
+    </style>
+
+    <color name="bar_color">#FFC0CB</color>
+    <color name="white">#FFFFFF</color>
+</resources>

@@ -1,0 +1,29 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context="le1779.whereareyou.Main2Activity">
+
+    <item
+        android:id="@+id/creat_group"
+        android:title="新增區域"
+        app:showAsAction="withText|ifRoom" />
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_fblogout"
+        android:title="FB Logout"
+        android:orderInCategory="200"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_dev"
+        android:title="Developer"
+        android:orderInCategory="300"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/right_drawer_open"
+        android:icon="@drawable/config"
+        android:title="right_drawer_open"
+        app:showAsAction="always"/>
+</menu>
